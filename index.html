@@ -663,6 +663,10 @@
 </head>
 
 <body>
+    <audio id="bg-music" autoplay loop preload="auto" playsinline>
+        <source src="music/song.mp3" type="audio/mpeg">
+    </audio>
+
 
     <div id="bg-canvas"></div>
 
@@ -735,13 +739,23 @@
             <span class="heart-beat">♥</span>
         </footer>
 
-        <audio id="bg-music" autoplay loop>
-            <source src="/music/song.mp3" type="audio/mpeg">
-        </audio>
+
 
     </div>
 
     <script>
+
+        //music
+
+        const music =
+            document.getElementById("bg-music");
+
+        document.addEventListener("click", () => {
+
+            music.play();
+
+        }, { once: true });
+
         // ── Floating hearts ──────────────────────────────────────
         const bgEl = document.getElementById('bg-canvas');
         const symbols = ['♡', '♥', '❤', '💕', '💗', '💓', '🌸', '✿', '✦'];
@@ -875,19 +889,6 @@
         firstPhoto.style.backgroundImage = `url('${photos[0].img}')`;
         firstPhoto.style.backgroundSize = 'cover';
         firstPhoto.style.backgroundPosition = 'center';
-
-        //music
-        const music = document.getElementById('bg-music');
-
-        function startMusic() {
-            music.play();
-
-            document.removeEventListener('click', startMusic);
-            document.removeEventListener('touchstart', startMusic);
-        }
-
-        document.addEventListener('click', startMusic);
-        document.addEventListener('touchstart', startMusic);
     </script>
 </body>
 
